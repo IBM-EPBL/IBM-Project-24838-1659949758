@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@700&display=swap" rel="stylesheet">
+    <div class="container">
+
+    
+    <style>
+        .container{
+            margin-left: 500px;
+            margin-top: 150px;
+        }
+        .bmi_container {
+            display: flex;
+            flex-direction: column;
+            width: 300px;
+            gap: 8px;
+        }
+
+        
+    </style>
+    </div>
+</head>
+
+<body style="background-image: linear-gradient(120deg,#84e1ef,#ea7dbb);">
+    <div class="container">
+        <h1>BMI Calculator</h1>
+        <div class="bmi_container">
+            <input id="height" type="number" placeholder="Enter Your Height in Centimeters:">
+            <input id="weight" type="number" placeholder="Enter Your Weight in Kilograms: ">
+
+            <button type="submit" onclick="Calculate()">Calculate BMI</button>
+        </div>
+
+        <div class="bmi value">
+            <h4>BMI Value: </h4>
+            <div id="bmioutput"></div>
+        </div>
+        <div class="status">
+            <h4>Status: </h4>
+            <div id="bmistatus"></div>
+        </div>
+
+    </div>
+    <script>
+        const bmioutput = document.getElementById('bmioutput')
+        const bmistatus = document.getElementById('bmistatus')
+        
+        function Calculate() {
+            var height = document.getElementById("height").value;
+            var weight = document.getElementById("weight").value;
+
+            var result = parseFloat(weight) / (parseFloat(height) / 100) ** 2;
+
+            if (!isNaN(result)) {
+                bmioutput.innerHTML = result;
+                if (result < 18.5) {
+                    bmistatus.innerHTML = "Underweight,take more calories";
+                }
+                else if (result < 25) {
+                    bmistatus.innerHTML = "Healthy,take nutrition rich food";
+                }
+                else if (result < 30) {
+                    bmistatus.innerHTML = "Overweight,reduce calorie intake and do more exercise";
+                }
+                else {
+                    bmistatus.innerHTML = "Obesity,avoid junk food and do more exercise ";
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
